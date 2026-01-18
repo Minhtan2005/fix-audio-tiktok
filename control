@@ -1,0 +1,9 @@
+Package: com.yourname.fixaudiotiktok
+Name: FixAudioTikTok
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Description: Fix audio for VCam on TikTok
+Maintainer: yourname
+Author: yourname
+Section: Tweaks
