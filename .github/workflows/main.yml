@@ -7,16 +7,25 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+
       - name: Install Missing Library
         run: |
           sudo apt-get update
           sudo apt-get install -y libtinfo5
+
+      - name: Fix Windows Line Endings
+        run: |
+          sed -i 's/\r$//' control
+          sed -i 's/\r$//' Makefile
+
       - name: Setup Theos
         uses: Randomblock1/theos-action@v1
         with:
           theos-sdks: https://github.com/theos/sdks
+
       - name: Build Package
         run: make package FINALPACKAGE=1
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
