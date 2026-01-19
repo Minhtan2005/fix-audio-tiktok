@@ -1,28 +1,9 @@
-name: Build Tweak
-on: [push, pull_request, workflow_dispatch]
-jobs:
-  build:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Install Missing Library
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libtinfo5
-
-      - name: Setup Theos
-        uses: Randomblock1/theos-action@v1
-        with:
-          theos-sdks: https://github.com/theos/sdks
-
-      - name: Build Package
-        run: make package FINALPACKAGE=1
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: FixAudioTikTok
-          path: packages/*.deb
+Package: com.minhtan.fixaudiotiktok
+Name: FixAudioTikTok
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Description: Fix audio for VCam on TikTok
+Maintainer: minhtan
+Author: minhtan
+Section: Tweaks
